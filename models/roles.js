@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const mgtSchema = new mongoose.Schema({
-    firstname: {
-        type: String,
-        required: true,
-    },
-    lastname: {
+    fllname: {
         type: String,
         required: true,
     },
@@ -26,7 +22,7 @@ const mgtSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ["Manager", "Secetary", "HR"],
+        enum: ["Manager", "Employee", "Users"],
         required: true,
     },
 }, { timestamps: true });
