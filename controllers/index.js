@@ -1,18 +1,20 @@
 const User = require("../models/roles");
-const Error = require('../../lib/error');
-const { passwordHash, passwordCompare } = require('../../lib/bycrypt');
-const { jwtSign } = require('../../lib/ath');
+const Error = require('../lib/error');
+const { validationResult, body } = require("express-validator");
+const { passwordHash, passwordCompare } = require('../lib/bycrypt');
+const { jwtSign } = require('../lib/ath');
 
 const Register = async(req, res) => {
-    const { fullname, email, password, confirmPassword, role } = req.body;
+    const { fullname, email, password, role } = req.body;
     try {
-        if (fullname && email && password && confirmPassword && role) {
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            throw Error("Error request, check input again.", result, 401)
+        }
+        if (fullname && email && password && role) {
             let userExist = await User.findOne({ email: email })
             if (userExist) {
                 throw Error(`Email ${email} already exist, try another one.`, 400)
-            }
-            if (confirmPassword !== password) {
-                throw Error('Password does not match', 400)
             }
             const hashedPassword = await passwordHash(password)
             const user = new User({
