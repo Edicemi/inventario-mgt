@@ -1,4 +1,4 @@
-const User = require("../models/roles");
+const User = require("../models/user");
 const Error = require('../lib/error');
 const { validationResult, body } = require("express-validator");
 const { passwordHash, passwordCompare } = require('../lib/bycrypt');

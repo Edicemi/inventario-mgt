@@ -4,6 +4,7 @@ const express = require('express');
 logger = require('morgan');
 const app = express();
 const userRoute = require('./routes/user-route');
+const productRouter = require('./routes/products');
 
 
 //middleware
@@ -14,6 +15,7 @@ app.use(express.json());
 
 //api routes
 app.use('/v1', userRoute);
+app.use('/v2', productRouter);
 
 //server
 app.listen(process.env.PORT, _ => {
