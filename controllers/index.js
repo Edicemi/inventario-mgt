@@ -3,6 +3,9 @@ const Error = require('../lib/error');
 const { validationResult, body } = require("express-validator");
 const { passwordHash, passwordCompare } = require('../lib/bycrypt');
 const { jwtSign } = require('../lib/ath');
+const authy = require('authy')(config.authyKey);
+const twilioClient = require('twilio')(config.accountSid, config.authToken);
+
 
 const Register = async(req, res) => {
     const { fullname, email, password, role } = req.body;

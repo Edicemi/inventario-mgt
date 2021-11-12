@@ -12,10 +12,15 @@ const mgtSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    // confirmPassword: {
-    //     type: String,
-    //     required: true,
-    // },
+    phone: {
+        type: String,
+        required: true,
+    },
+    verified: {
+        type: Boolean,
+        default: false,
+    },
+    authyId: String,
     role: {
         type: String,
         enum: ["Manager", "Employee", "User"],
