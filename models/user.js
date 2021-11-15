@@ -23,7 +23,7 @@ const mgtSchema = new mongoose.Schema({
     authyId: String,
     role: {
         type: String,
-        enum: ["Manager", "Employee", "User"],
+        enum: ["Manager", "tenantAdmin", "User"],
         required: true,
     },
 }, { timestamps: true });

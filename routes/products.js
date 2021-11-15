@@ -6,4 +6,5 @@ const { validateUserToken, validateManager } = require("../lib/ath");
 
 router.post("/add", validateUserToken, validateManager, addProductType);
 
+
 module.exports = router;

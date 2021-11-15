@@ -20,3 +20,23 @@ exports.addProductType = async(req, res) => {
         })
     }
 };
+
+exports.fetchAll = async(req, res) => {
+    try{
+
+    }
+}
+
+const getAllCloth = async (req, res) => {
+    try {
+      const cloth_types = await otherClothPrice.find().select(["name", "amount"]);
+      Response(res).success(
+        {
+          cloth_types,
+        },
+        200
+      );
+    } catch (err) {
+      Response(res).error(err, err.code);
+    }
+  };
