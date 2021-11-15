@@ -23,20 +23,16 @@ exports.addProductType = async(req, res) => {
 
 exports.fetchAll = async(req, res) => {
     try{
-
-    }
+      const product_type = await Product_Type.find().select(["name", "description"]);
+      return res.status(200).json({
+        message: 'New product category added succesfully',
+        product_type,
+    });
+}catch (error) {
+    console.log(error)
+    return res.status(error.code).json({
+        message: error.message,
+        code: error.code,
+    })
 }
-
-const getAllCloth = async (req, res) => {
-    try {
-      const cloth_types = await otherClothPrice.find().select(["name", "amount"]);
-      Response(res).success(
-        {
-          cloth_types,
-        },
-        200
-      );
-    } catch (err) {
-      Response(res).error(err, err.code);
-    }
-  };
+};
