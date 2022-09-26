@@ -1,8 +1,8 @@
 require('./lib/db');
 require('dotenv').config();
 const express = require('express');
-logger = require('morgan');
 const app = express();
+logger = require('morgan');
 const userRoute = require('./routes/user-route');
 const productRouter = require('./routes/products');
 

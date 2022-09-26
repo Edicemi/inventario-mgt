@@ -1,5 +1,5 @@
 const Product_Type = require("../models/product-type");
-exports.addProductType = async(req, res) => {
+exports.addUser = async(req, res) => {
     try {
         const { name, description } = req.body;
 
